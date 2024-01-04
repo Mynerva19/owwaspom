@@ -27,9 +27,9 @@ class Login extends CI_Controller {
                         $message = $this->Session->MessageResponse($user['message'], "success");
                         
                         $_SESSION['loginStatus'] = true;
-
+                        // $_SESSION['USERID'] = $user['ID'];
                         if ($user['type']=='Administrator'){
-                            redirect("Admin");
+                            redirect("Admin/Dashboard");
                             $_SESSION['loginTo'] = "admin";
     
                         } else if ($user['type'] == 'Staff') {
@@ -63,4 +63,5 @@ class Login extends CI_Controller {
         ));
 
     }
+    
 }

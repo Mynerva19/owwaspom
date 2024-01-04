@@ -85,6 +85,8 @@ class ProfileSub
 
         $self->load->view('resource', array(
             'body' =>  $self->load->view("Scholar/theme/template", array(
+                
+                "name"=>$_SESSION['NAME'],
                 "content" =>  $content,
                 "cur" => $self->countNotif($_SESSION['USERID']),
                 "title" => "Announcement"

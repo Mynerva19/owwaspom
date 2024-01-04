@@ -49,6 +49,8 @@ class AnnouncementSub
                 'body' =>  $self->load->view(
                     "Scholar/theme/template",
                     array(
+                        
+                        "name"=>$_SESSION['NAME'],
                         "content" =>  $content,
                         "cur" => $self->countNotif($_SESSION['USERID']),
                         "title" => "Announcement"

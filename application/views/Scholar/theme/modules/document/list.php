@@ -6,7 +6,7 @@
 		?>
 			<div class="row">
 			<div class="col-lg-12"> 
-					<h3 >Adding Documents <small>|  <label class="label label-xs" style="font-size: 20px"><a href="index.php?view=add">  <i class="fa fa-plus-circle fw-fa" style="color: #00bcd4"> New</a></i></label> |</small></h3> 
+					<h3 >Adding Documents <small>|  <label class="label label-xs" style="font-size: 20px"><a href="documents?view=add">  <i class="fa fa-plus-circle fw-fa" style="color: #00bcd4"> New</a></i></label> |</small></h3> 
 					
 					</div>
 				</div>
@@ -31,17 +31,15 @@
 										continue; // Skip this iteration of the loop
 									}
 
-									$res = $_SESSION['USERID'];
-							if ($result->report_sender == $res){
-								
-									
-								echo '<tr>';
-								echo '<td width="5%" align="center"></td>';
-								echo '<td> '. $result->document_name.'</td>';
-								echo '<td> '. $result->document_description.'</td>';
-								echo '<td> '. $result->year_level.'</td>';
-								echo '<td> '. $result->semester.'</td>';
-								echo '</tr>';
+								if ($result->report_sender == $user){
+						
+									echo '<tr>';
+									echo '<td width="5%" align="center"></td>';
+									echo '<td> '. $result->document_name.'</td>';
+									echo '<td> '. $result->document_description.'</td>';
+									echo '<td> '. $result->year_level.'</td>';
+									echo '<td> '. $result->semester.'</td>';
+									echo '</tr>';
 							} 
 						}
 							?>

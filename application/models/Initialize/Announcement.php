@@ -47,7 +47,13 @@ class Announcement extends CI_Model {
     }
 
     protected function attributes() {
-        return $this->dbfields();
+        $attributes = array();
+        foreach ($this->dbfields() as $field) {
+            if (property_exists($this, $field)) {
+                $attributes[$field] = $this->$field;
+            }
+        }
+        return $attributes;
     }
 
     protected function sanitized_attributes() {
@@ -64,9 +70,19 @@ class Announcement extends CI_Model {
 
     public function create() {
         $attributes = $this->sanitized_attributes();
-        $this->db->insert($this->tblname, $attributes);
-        $this->id = $this->db->insert_id();
-        return true;
+        
+        // print_r($attributes);
+        $table_columns = implode(',', array_keys($attributes));
+        $table_val = implode(',', $attributes);
+        $sql = "INSERT INTO $this->tblname($table_columns) VALUES($table_val)";
+        $this->db->query($sql);
+
+        if ($this->db->affected_rows() > 0) {
+            $this->id = $this->getLastInsertId();
+            return true;
+        } else {
+            return false;
+        }
     }
 
     public function update($id = 0) {
@@ -91,7 +107,7 @@ class Announcement extends CI_Model {
         return $this->email->send();
     }
 
-    public function get_last_insert_id() {
+    public function getLastInsertId() {
         return $this->db->insert_id();
     }
 }

@@ -79,6 +79,9 @@ class AnnounceScholar extends CI_Controller
 
     public function doComment()
     {
+
+        $link = (!empty($_GET['link'])) ? $_GET['link'] : 'Scholar';
+
         global $mydb;
         $id_announcement = $_POST['id_announcement'];
         $comment_text = $_POST['comment_text'];
@@ -96,7 +99,7 @@ class AnnounceScholar extends CI_Controller
                 )),
                 'expire' => 1
             ));
-            redirect("Scholar/announcement");
+            redirect("$link/announcement");
         } else {
             $comment = new Comments();
             $comment->announcement_id = $id_announcement;
@@ -121,7 +124,7 @@ class AnnounceScholar extends CI_Controller
                     )),
                     'expire' => 1
                 ));
-                redirect("Scholar/announcement");
+                redirect("$link/announcement");
             } else {
                 $this->input->set_cookie(array(
                     "name" => "message",
@@ -131,7 +134,7 @@ class AnnounceScholar extends CI_Controller
                     )),
                     'expire' => 1
                 ));
-                redirect("Scholar/announcement");
+                redirect("$link/announcement");
             }
         }
     }

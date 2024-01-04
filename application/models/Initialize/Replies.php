@@ -74,6 +74,8 @@ class Replies extends CI_Model {
         $attributes = $this->sanitized_attributes();
         $table_columns = implode(',', array_keys($attributes));
         $table_val = implode(',', $attributes);
+
+        print_r($attributes);
         $sql = "INSERT INTO $this->tblname($table_columns) VALUES($table_val)";
         $this->db->query($sql);
 

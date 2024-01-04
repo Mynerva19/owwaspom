@@ -36,7 +36,11 @@ class Request extends CI_Model {
         $query = $this->db->get($this->tblname);
         return $query->row();
     }
-
+    public function single_studentrequest_student($id = "") {
+        $this->db->where('scholar_id', $id);
+        $query = $this->db->get($this->tblname);
+        return $query->row();
+    }
     public function instantiate($record) {
         $object = new self;
 

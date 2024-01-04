@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 require_once APPPATH.'controllers/SubScholar/announcement/announcement.php';
 require_once APPPATH.'controllers/SubScholar/profile/profile.php';
 require_once APPPATH.'controllers/SubScholar/documents/documents.php';
+require_once APPPATH.'controllers/SubScholar/notification/notification.php';
 
 class Scholar extends CI_Controller {
     public function __construct() {
@@ -22,6 +23,7 @@ class Scholar extends CI_Controller {
         $this->load->model("Initialize/Comments");
         $this->load->model("Initialize/Replies");
 
+        $this->load->model("Initialize/Dates");
         $this->message = null;
 
 
@@ -30,6 +32,8 @@ class Scholar extends CI_Controller {
         $this->profile = new profileSub();
         
         $this->documents = new documentsSub();
+        
+        $this->notifications = new notifSub();
     }
     
     function accountSession() {
@@ -103,6 +107,7 @@ class Scholar extends CI_Controller {
             'body' =>  $this->load->view("Scholar/theme/template",array(
                 "cur"=>$this->countNotif($_SESSION['USERID']),
                 "title"=>"Dashboard",
+                "name"=>$_SESSION['NAME'],
                 "content"=>  $this->load->view('Scholar/home',array(
                     "title"=>'Home',
                     "accountID" => $accountID,
@@ -124,6 +129,10 @@ class Scholar extends CI_Controller {
 
     public function documents() {
         $this->documents->documentsController($this);
+    }
+
+    public function notifications() {
+        $this->notifications->notificationsController($this);
     }
 
     public function logout() {

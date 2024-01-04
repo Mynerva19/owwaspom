@@ -35,7 +35,7 @@
                     </a>
                 </li>
                 <li class="nav-item <?php echo ($this->Func_Misc->currentpage_admin() == 'notification') ? 'active' : ''; ?>">
-      <a class="nav-link" href="<?php echo base_url("Scholar/notification")?>">
+      <a class="nav-link" href="<?php echo base_url("Scholar/notifications")?>">
    <p>Notification        <span class="badge rounded-pill badge-notification <?php echo (!empty($cur[0]) && $cur[0]->count > 0) ? 'bg-danger text-white' : 'bg-transparent text-gray'; ?> ">
                                 <?php echo (!empty($cur[0])) ? $cur[0]->count : ""; ?>
                             </span>
@@ -64,7 +64,7 @@
                 <div class="collapse navbar-collapse justify-content-end">
                     <ul class="navbar-nav">
                         <i class="fa fa-bell-o" style="float: right;"></i>
-                        <a href="scholar/modules/notification/index.php">
+      <a class="nav-link" href="<?php echo base_url("Scholar/notifications")?>">
                             <span class="badge rounded-pill badge-notification <?php echo (!empty($cur[0]) && $cur[0]->count > 0) ? 'bg-danger text-white' : 'bg-transparent text-gray'; ?> ">
                                 <?php echo (!empty($cur[0])) ? $cur[0]->count : ""; ?>
                             </span>
@@ -76,13 +76,13 @@
                                 <p class="d-lg-none d-md-block">
                                     Account
                                 </p>
-                                <?php echo $_SESSION['NAME'];?>
+                                <?php echo $name;?>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownProfile">
                                 <a class="dropdown-item"
                                     href="scholar/modules/user/index.php?view=edit&id=<?php echo $_SESSION['USERID']; ?>">Profile</a>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="logout">Log out</a>
+                                <a class="dropdown-item" href="<?php echo base_url("Scholar/Logout") ?>">Log out</a>
                             </div>
                         </li>
                     </ul>

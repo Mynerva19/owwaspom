@@ -5,28 +5,33 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <link rel="icon" type="image/png" href="./assets/images/owwa.png">
+  <link rel="icon" type="image/png" href="<?php echo base_url("./assets/images/owwa.png") ?>">
 	<title>OWWASPOMS (<?php echo $title ?>)</title>
 	<link href='<?php echo base_url('./assets/css/bootstrap/bootstrap.min.css'); ?>' rel="stylesheet" />
-  <link rel="stylesheet" href="font-awesome/4.5.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="<?php echo base_url('./assets/css/font-awesome/font-awesome.min.css')?>"/>
 	<?php echo (!empty($style)) ? $style : ''; ?>
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <link href="<?php echo base_url('./assets/scholarMenu/assets/css/material-dashboard.css?v=2.1.1') ?>" rel="stylesheet" />
   <link href="<?php echo base_url('./assets/scholarMenu/assets/demo/demo.css')?>" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-wysiwyg/0.3.3/bootstrap3-wysihtml5.min.css" integrity="sha512-Bhi4560umtRBUEJCTIJoNDS6ssVIls7oiYyT3PbhxZV+9uBbLVO/mWo56hrBNNbIfMXKvtIPJi/Jg+vpBpA7sg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 </head>
 
 <body>
+  
 	<?php echo (!empty($body)) ? $body : ''; ?>
   
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
+<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
   <script src="<?php echo base_url("/assets/adminMenu/assets/js/core/jquery.min.js")?>"></script>
     <script src="<?php echo base_url("/assets/adminMenu/assets/js/core/popper.min.js")?>"></script>
     <script src="<?php echo base_url("/assets/adminMenu/assets/js/core/bootstrap-material-design.min.js")?>"></script>
     <script src="<?php echo base_url("/assets/adminMenu/assets/js/plugins/perfect-scrollbar.jquery.min.js")?>"></script>
     <!-- Plugin for the momentJs  -->
+    <script src="https://cdn.jsdelivr.net/npm/wysihtml5@0.5.0/dist/wysihtml5-0.5.0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@editorjs/editorjs@latest"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap3-wysiwyg/0.3.3/bootstrap3-wysihtml5.min.js" integrity="sha512-XiYIoVJlhi4eG/3R6pdLS2aBa1NiWEQdEQVMT6WpkKbmHN+NTUWbz4nZBtcmIeeoq08iC8PtPw8WxYRzHVGWYA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="<?php echo base_url("/assets/adminMenu/assets/js/plugins/moment.min.js")?>"></script>
     <!--  Plugin for Sweet Alert -->
@@ -73,6 +78,8 @@
   <script type="text/javascript" language="javascript" src="<?php echo base_url("/input-mask/jquery.inputmask.extensions.js")?>"></script> 
 
 
+	<?php echo (!empty($script)) ? $script : ''; ?>
+  
   <script type="text/javascript" charset="utf-8">
   $(document).ready(function() {
       var t = $('#example').DataTable( {
@@ -114,12 +121,12 @@
       }
     });
   });
-    $(function () {
-      //Add text editor 
-      $("#ANNOUNCEMENT_WHAT").wysihtml5();
-      $("#EVENT_WHAT").wysihtml5();
-      $("#compose-textarea").wysihtml5();
-    });
+    // $(function () {
+    //   //Add text editor 
+    //   $("#ANNOUNCEMENT_WHAT").wysihtml5();
+    //   $("#EVENT_WHAT").wysihtml5();
+    //   $("#compose-textarea").wysihtml5();
+    // });
   </script>
   <script type="text/javascript">
       $(function () {
